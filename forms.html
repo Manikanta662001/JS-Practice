@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            margin-left: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <fieldset>
+            <legend>Employee form</legend>
+            <label for="fname">Firstname</label>
+            <input type="text" name="fname" id="fname"><br><br>
+            <label for="lname">Lastname</label>
+            <input type="text" name="lname" id="lname"><br><br>
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" id="gen" value="Male">Male
+            <input type="radio" name="gender" id="gen" value="Female">Female
+            <input type="radio" name="gender" id="gen" value="Trans">Trans
+            <br><br>
+            <label for="state">State</label>
+            <select name="state" id="state" >
+                <option value=""></option>
+                <option value="AP">AP</option>
+                <option value="TS">TS</option>
+                <option value="KA">KA</option>
+                <option value="MH">MH</option>
+            </select><br><br>
+            <label for="course">Courses</label><br>
+            <input type="checkbox" name="course" id="course" value="Python">Python<br>
+            <input type="checkbox" name="course" id="course" value="HTML">HTML<br>
+            <input type="checkbox" name="course" id="course" value="CSS">CSS<br><br>
+
+
+            <input type="checkbox" name="hai" id="acc">I accept
+            <br><br>
+            <label for="addr">Address</label>
+            <textarea name="addr" id="addr" cols="20" rows="10"></textarea><br><br>
+
+            <input type="date" name="" id="date">
+            <input type="password" name="" id="passw">
+
+            <!-- <input type="submit" value="Submit"> -->
+            <input type="image" src="./submit.jpg" alt="Submit" width="48" height="48"><br><br>
+
+
+
+        </fieldset>
+    </form>
+    <script>
+        function myfun(eve) {
+            eve.preventDefault()
+            let fname = document.getElementById('fname').value
+            let lname = document.getElementById('lname').value
+            let ge = document.getElementsByName('gender')
+            let state = document.getElementById('state').value
+            let courses = document.getElementsByName('course')
+            let checkbox = document.getElementById('acc')
+            let address = document.getElementById('addr').value
+            let date = document.getElementById('date').value
+            let password = document.getElementById('passw').value
+            console.log(address)
+
+            let gender = ''
+            for (let x of ge) {
+                if (x.checked) {
+                    gender = x.value
+                    break
+                }
+            }
+            let c = []
+            for (let y of courses) {
+                if (y.checked) {
+                    c.push(y.value)
+                }
+            }
+
+            if (!checkbox.checked) {
+                eve.preventDefault()
+                alert('please select the i accept checkbox')
+            }
+
+            console.log(fname, lname, gender, state, c, address, date, password)
+        }
+
+        const form = document.getElementById('form')
+        form.addEventListener('submit', myfun)
+    </script>
+</body>
+
+</html>

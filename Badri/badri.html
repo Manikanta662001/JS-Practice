@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./badri.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form>
+      <h1>Todo List</h1>
+      <div>
+        <label for="task">Todo : </label>
+        <input
+          type="text"
+          name="task"
+          id="task"
+          placeholder="Enter a todo"
+          onchange="handleChange()"
+        />
+      </div>
+      <div class="sbt-btn">
+        <button onclick="handleClick(event)" id="submit">Add Todo</button>
+      </div>
+      <ul id="todo-list"></ul>
+    </form>
+    <script>
+      let todolist = [];
+      let item = "";
+      let isEditing = false;
+      let updateindex;
+      function handleChange() {
+        const inputValue = document.getElementById("task").value;
+        item = inputValue;
+      }
+      function handleClick(e) {
+        e.preventDefault();
+        const alreadypresent = todolist.find(
+          (todo) => todo.toLowerCase() == item.toLowerCase()
+        );
+        console.log(alreadypresent, todolist);
+        if (item.trim() == "") {
+          alert("Enter a Valid Todo");
+        } else if (!alreadypresent) {
+          if (isEditing) {
+            todolist[updateindex] = item;
+          } else {
+            todolist.push(item);
+          }
+          updateTodolist();
+        } else if (alreadypresent) {
+          alert("Todo is Already Present");
+        }
+        document.getElementById("submit").textContent = "Add Todo";
+        document.getElementById("task").value = "";
+        item = "";
+      }
+      function updateTodolist() {
+        const todos = document.getElementById("todo-list");
+        todos.innerHTML = "";
+        if (todolist.length > 0) {
+          todolist.forEach((todo, index) => {
+            const li = document.createElement("li");
+            li.classList.add("todo-item"); // Adding class name for todo item
+
+            const todoText = document.createElement("div");
+            todoText.classList.add("todo-text"); // Adding class name for todo text
+            todoText.textContent = todo;
+
+            const editbtn = document.createElement("button");
+            editbtn.textContent = "Edit";
+            editbtn.classList.add("edit-btn"); // Adding class name for edit button
+            editbtn.addEventListener("click", () => {
+              handleEditBtn(event, index, todo);
+            });
+
+            const removebtn = document.createElement("button");
+            removebtn.textContent = "Remove";
+            removebtn.classList.add("remove-btn"); // Adding class name for remove button
+            removebtn.addEventListener("click", () => {
+              handleRemove(event, todo);
+            });
+
+            li.appendChild(todoText);
+            li.appendChild(editbtn);
+            li.appendChild(removebtn);
+            todos.appendChild(li);
+          });
+        } else {
+          const li = document.createElement("li");
+          li.textContent = "Todos are Not present";
+          li.classList.add("err-msg");
+          todos.appendChild(li);
+        }
+      }
+      function handleRemove(event, todo) {
+        event.preventDefault();
+        const confirm_or_not = window.confirm("Are you sure to delete?");
+        if (confirm_or_not) {
+          const filtered = todolist.filter((i) => i !== todo);
+          todolist = filtered;
+          updateTodolist();
+        }
+      }
+      function handleEditBtn(event, index, todo) {
+        event.preventDefault();
+        isEditing = true;
+        updateindex = index;
+        document.getElementById("task").value = todo;
+        document.getElementById("submit").textContent = "Update Todo";
+        item = todo;
+      }
+    </script>
+  </body>
+</html>

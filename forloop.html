@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <script>
+        function forloop() {
+            let o = ''
+            for (let i = 0; i <= 10; i++) {
+                //console.log(i)
+                o += i + ' '
+            }
+            console.log(o)
+        }
+        forloop()
+
+
+        let stud = ['mani', 'ram', 'sam', 'pradeep']
+
+        for (let i = 0; i < stud.length; i++) {
+            console.log(stud[i], i)
+        }
+        //for each method
+        stud = ['mani', 'ram', 'sam', 'pradeep']
+        let text = ''
+
+        stud.forEach(fun)
+        function fun(y) {
+            text += `<h1>${y}</h1>` + '<br>'
+        }
+        document.getElementById('demo').innerHTML = text
+
+        //map method
+        let num = [1, 2, 3, 4, 5]
+        let ano = num.map(myfun)
+
+        function myfun(v) {
+            return v ** 2
+        }
+        console.log(ano)
+
+        //filter method
+        let n = [23, 12, 45, 78, 10, 3]
+        let filtered_array = n.filter(filter_fun);
+
+        function filter_fun(v) {
+            if (v > 20) {
+                return v
+            }
+        }
+        console.log(filtered_array)
+
+        //reduce method
+        n = [23, 12, 45, 78, 10, 3]
+        let reduced_array = n.reduce(reduce_fun, 100);
+
+        function reduce_fun(total, value) {
+            return total + value
+        }
+        console.log(reduced_array)
+
+        //every method
+        let numbers = [45, 24, 92, 162, 25];
+        let allOver18 = numbers.every(myFunction);
+
+        function myFunction(value) {
+            return value > 18;
+        }
+        console.log(allOver18)
+
+        //some method 
+        numbers = [45, 4, 9, 16, 25];
+        let someOver18 = numbers.some(myFunction);
+
+        function myFunction(value, index, array) {
+            return value > 18;
+        }
+        console.log(someOver18)
+
+
+        //find method returns an first array element which satisfies the function condition
+        numbers = [4, 9, 16, 25, 29];
+        let first = numbers.find(myFunction);
+
+        function myFunction(value, index, array) {
+            return value > 18;
+        }
+        console.log('first element > 18 is :' + first)
+
+
+        //findIndex method returns an IP of first array element which satisfies the function condition
+        numbers = [4, 9, 16, 25, 29];
+        first = numbers.findIndex(myFunction);
+
+        function myFunction(value, index, array) {
+            return value > 18;
+        }
+        console.log('IP of first element > 18 is :' + first)
+
+
+        //array.from method
+        let s = 'manikanta'
+        let ar = Array.from(s)
+        console.log(ar)
+
+        stud = ['mani', 'ram', 'sam', 'pradeep']
+        keys = stud.keys()
+        console.log(keys)//iterator
+        for (let key of keys) {
+            console.log(key, stud[key])
+        }
+
+        fruits = ["Banana", "Orange", "Apple", "Mango"];
+        const f = fruits.entries();
+
+        for (let x of f) {
+            console.log(x)
+        }
+        console.log(fruits.includes('Apple'))
+        //spread operator
+        const q1 = ["Jan", "Feb", "Mar"];
+        const q2 = ["Apr", "May", "Jun"];
+        const q3 = ["Jul", "Aug", "Sep"];
+        const q4 = ["Oct", "Nov", "May"];
+
+        const all = [...q1,...q2,...q3,...q4]
+        console.log(all)
+
+        //forEach
+        stud = ['mani', 'ram', 'sam', 'pradeep']
+        stud.forEach(function (item) { console.log(item) })
+        stud.forEach((item, index, arr) => { console.log(item, index, arr) })
+        //map methiod
+        num = [1, 2, 3, 4, 5]
+        num.map((item, ind, array) => {
+            console.log(item, ind)
+        })
+        //filter method
+        let nums = [1, 10, 20, 13, 17]
+        let after_filter = nums.filter((item, index) => {
+            if (item < 15) {
+                return item
+            }
+        })
+        console.log(after_filter)
+        //reduce method
+        let total = 110
+        let reduced_num = nums.reduce(red_fun, total)
+        function red_fun(total, value) {
+            return total + value
+        }
+        console.log(reduced_num, '=-=-')
+    </script>
+</body>
+
+</html>

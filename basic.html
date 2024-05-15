@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS</title>
+</head>
+<body>
+    <h1>Javascript</h1>
+    <p id="demo"></p>
+    <!-- if we click on button the whole content overrides -->
+    <button type="button" onclick="document.write(10+10)">click</button>
+    <!-- this is used to print webpage -->
+    <button onclick="window.print()">Print this page</button>
+    <p id="p-tag">This is P tag</p>
+    <button onclick="document.getElementById('p-tag').style.fontSize='50px'">Increase font-size</button>
+    <h1 id="h1-tag" style="display: block;">This is H1 tag</h1>
+    <button onclick="document.getElementById('h1-tag').style.display='none'">Hide h1 tag</button>
+    <script>
+          document.getElementById('demo').innerHTML='this is script tag'
+         
+          document.write(3+10)
+          window.alert(2+8);
+          alert('hello')
+          console.log(5 + 6);
+    </script>
+</body>
+</html>

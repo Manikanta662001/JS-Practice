@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+<script>
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let text='<ul>'
+    for (let i=0;i<fruits.length;i++){
+        text+=`<li>${fruits[i]}</li>`
+    }
+    text+='</ul>'
+    document.getElementById('demo').innerHTML=text
+
+    let t='<ol>'
+    fruits.forEach(fun)
+
+    function fun(val){
+        t+='<li>'+val+'</li>'
+    }
+    t+='</ol>'
+    document.getElementById('demo1').innerHTML=t
+</script>
+
+</body>
+</html>

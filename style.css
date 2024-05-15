@@ -1,0 +1,25 @@
+table{
+    border: 3px solid red;
+   }
+   td,thead{
+    border: 1px solid cyan;
+    text-align: center;
+   }
+   th{
+    width: 130px;
+    
+   }
+   h1
+   {
+    color: chartreuse;
+    background-color: fuchsia;
+   }
+   button{
+    color: cyan;
+    background-color:red
+   }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+   
+}

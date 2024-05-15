@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <style>
+        table{
+            border: solid 3px fuchsia;
+          }
+          
+          table td{
+            border: solid 2px cyan;
+          }
+    </style>
+</head>
+<body>
+    <div id="target">
+
+    </div>
+    <script>
+        let emps=[
+
+            {name : 'manikanta' , age : 22 , gender : 'male', Designation : 'UI Trainee'},
+            {name : 'ram' , age : 25 , gender : 'male', Designation : 'UI Trainee'},
+            {name : 'ramu' , age : 27 , gender : 'male', Designation : 'UI Trainee'},
+            {name : 'sangeetha' , age : 24 , gender : 'female', Designation : 'UI Trainee'},
+            {name : 'sam' , age : 25 , gender : 'male', Designation : 'UI Trainee'}
+        
+        ];
+        const newtable=document.createElement('table');
+        newtable.innerHTML='<tr><th>Name</th><th>Age</th><th>Gender</th><th>Designation</th></tr>'
+        for (emp of emps)
+        {
+            const newRow = document.createElement("tr");
+            const ename=document.createElement("td")
+            const eage=document.createElement("td")
+            const egender=document.createElement("td")
+            const edesignation=document.createElement("td")
+            
+
+            ename.textContent=emp.name
+            eage.textContent=emp.age
+            egender.textContent=emp.gender
+            edesignation.textContent=emp.Designation
+
+            newRow.appendChild(ename)
+            newRow.appendChild(eage)
+            newRow.appendChild(egender)
+            newRow.appendChild(edesignation)
+
+            newtable.appendChild(newRow)
+
+        }
+        const target = document.getElementById('target');
+        target.appendChild(newtable);
+    </script>
+</body>
+</html>

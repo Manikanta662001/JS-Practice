@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //adding an object to array
+      function employee(id,name,design)
+        {
+            let e=[
+                   {empid : 1 , empname : 'mani', empdesignation : 'Python Trainee'}, 
+                   {empid : 2 , empname : 'ram', empdesignation : 'UI Trainee'},
+                   {empid : 3 , empname : 'sangeetha', empdesignation : 'UI Trainee'} ];
+
+
+                   
+            e.push({empid:id,empname:name,empdesignation:design})
+            console.log(e)
+        }
+        //function call
+        employee(4,'xyz','ugfiuweyki')
+      
+
+      //also another way of adding an object into an arrray
+      e=[
+            {empid : 1 , empname : 'mani', empdesignation : 'Python Trainee'}, 
+            {empid : 2 , empname : 'ram', empdesignation : 'UI Trainee'},
+            {empid : 3 , empname : 'sangeetha', empdesignation : 'UI Trainee'} ];
+
+        function add(empid,empname,empdesignation){
+            let data={empid,empname,empdesignation}
+            e.push(data)
+            
+        }
+        add(10,'tom','QA Engineer')
+        console.log(e)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //updating an object from array
+        function empl(id,name,design)
+        {
+            let e=[
+                   {empid : 1 , empname : 'mani', empdesignation : 'Python Trainee'}, 
+                   {empid : 2 , empname : 'ram', empdesignation : 'UI Trainee'},
+                   {empid : 3 , empname : 'sangeetha', empdesignation : 'UI Trainee'} ];
+
+                for(let i=0;i<e.length;i++)
+                {
+                    if (e[i].empid==id){
+                        e[i].empname=name
+                        e[i].empdesignation=design
+                        console.log('employee updated')
+                    
+                    }
+                    
+                }
+            
+            console.log(e)
+        }
+        //function call
+        empl(1,'mani','UI Trainee')
+
+
+
+
+        
+
+        //deleting an object from array
+        function employ(id)
+        {
+            const e=[
+                   {empid : 1 , empname : 'mani', empdesignation : 'Python Trainee'}, 
+                   {empid : 2 , empname : 'ram', empdesignation : 'UI Trainee'},
+                   {empid : 3 , empname : 'sangeetha', empdesignation : 'UI Trainee'},
+                   {empid : 4,  empname:  'xyz',  empdesignation: 'ugfiuweyki'} ];
+
+
+        
+
+        for(let i=0;i<e.length;i++){
+            if (e[i].empid==id){
+                e.splice(i,1)
+                console.log('employee deleted')
+            }
+
+        }
+        console.log(e)
+
+                
+        }
+        //function call
+        employ(4)
+
+    
+    </script>
+</body>
+</html>

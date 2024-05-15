@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let stus=['hari','ram','king','raju','mani']
+        //normal for loop
+        for (let i=0 ; i <stus.length ; i++)
+        
+        {
+            console.log(i)//index positions
+            console.log(stus[i])
+        }
+        stus=['hari','ram','king','raju','mani']
+        //for in loop
+        //most cases we don't use for in with arrays
+        for (let x in stus)
+        {
+            console.log(x,stus[x])
+        }
+        //also objects
+        //most cases we use for in with objects
+        let person = {fname:"John", lname:"Doe", age:25};
+        for(let key in person)
+        {
+            console.log(key,person[key],typeof key)
+        }
+        
+        //for each method with array
+        stus=['hari','ram','king','raju','mani']
+        //index and array are optional
+        stus.forEach(function(value,index,array){
+            console.log(value,index,array)
+        });
+        //also updates all elements of an array
+        stus.forEach(function(value,index,array){
+            array[index]='hai '+value
+        });
+        console.log(stus)
+
+
+        //for each method with object
+        person = {fname:"John", lname:"Doe", age:25};
+        keys=Object.keys(person)
+        keys.forEach(function(k){
+            console.log(k,person[k])
+        });
+
+        //for of method with array
+        let cars = ["BMW", "Volvo", "Mini",'Benz','Buggati'];
+        for (let car of cars)
+        {
+            console.log(car)
+        }
+        //with string
+        let language = "JavaScript";
+        for (let l of language)
+        {
+            console.log(l)
+        }
+    </script>
+</body>
+</html>

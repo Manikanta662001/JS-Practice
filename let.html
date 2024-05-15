@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a=112;
+        console.log(a,'A')
+        
+       {
+        //let keyword has block scope i.e.,it cannot be accessed outside the block
+        let a=100 ;
+        //re-assignment is possible
+        a=18;
+        //re-declaration is not possible
+        //let a=30;
+        console.log(a)
+       }
+       //outer a value
+       console.log(a)
+    </script>
+</body>
+</html>

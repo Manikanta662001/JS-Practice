@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fru=['Banana','Coconut','Apple','Mango']
+        //sort method sorts elements in ascending order
+        fru.sort()
+        console.log(fru)
+        //if we want descending order just reverse the sorted array
+        fru.reverse()
+        console.log(fru)
+        //incase of numbers it compare first character of strings
+        const points = [40, 100, 1, 5, 25, 10];
+        points.sort()//not correct
+        console.log(points)
+        //numeric sort ascending order
+        points.sort(function(a,b) {return a - b})
+        console.log(points)
+        //numeric sort descending order
+        points.sort(function(a,b) {return b - a})
+        console.log(points)
+        //also 
+        fru=['Banana','Coconut','Apple','Mango']
+        console.log(fru)
+        fru.sort(function(a,b) {return a > b ? 1 : -1})
+        console.log(fru)
+        //
+        fru.sort(function(a,b) {return b > a ? 1 : -1})
+        console.log(fru)
+        //case insensitive sort
+        fru=['Banana','Coconut','Apple','Mango','apple','cherry']
+        fru.sort(function(a,b) {return a.toLowerCase() > b.toLowerCase() ? 1 : -1})
+        console.log(fru)
+
+
+      //sorting array of objects based on number
+
+        let e=[
+                   {empid : 1 , empname : 'mani', empdesignation : 'Python Trainee'}, 
+                   {empid : 3 , empname : 'sam', empdesignation : 'UI Trainee'},
+                   {empid : 2 , empname : 'ram', empdesignation : 'UI Trainee'}]
+
+        e.sort(function(a,b) {return a.empid - b.empid})
+        console.log(e)   
+        
+        //sorting array of objects based on string
+
+         e=[
+                    {empid : 3 , empname : 'sam', empdesignation : 'UI Trainee'},
+                   {empid : 1 , empname : 'mani', empdesignation : 'Python Trainee'}, 
+                   {empid : 2 , empname : 'ram', empdesignation : 'UI Trainee'}]
+
+        e.sort(function(a,b) {return a.empname > b.empname ? 1 : -1})
+        console.log(e)   
+    //sorting array of objects based on date
+
+
+        let events = [ { name: 'Birthday', date: new Date('2022-04-23') }, { name: 'Shopping', date: new Date('2022-04-17') }, { name: 'Meeting', date: new Date('2022-04-27') }, ];
+        events.sort(function(a,b) {return a.date - b.date})
+        console.log(events)   
+
+
+//
+        let Arr = [
+        { id: "1", date: "Mar 11 2012 10:00:00 AM" },
+        { id: "2", date: "Mar 8 2012 08:00:00 AM" },
+        {id : '3', date : "Feb 5 2012 09:00:00 AM"}
+        ];
+
+        Arr.sort(function(a,b) {return new Date(a.date) - new Date(b.date)})
+        console.log(Arr)
+        Arr.reverse()
+        console.log(Arr)
+
+
+
+
+
+
+
+
+
+
+        
+        // sorting array of objects based on keyname
+         Arr = [
+        {id: "2" },
+        {name : "mani"},
+        {date: "Mar 11 2012 10:00:00 AM" }
+        ];
+        Arr.sort(function(a,b) {return JSON.stringify(a) > JSON.stringify(b) ? 1 : -1}) 
+        console.log(Arr)
+    </script>
+</body>
+</html>

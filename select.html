@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <form action="" id="">
+
+            <select name="" id="gend">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <input type="button" value="submit" onclick="hai()">
+        </form>
+        <p id="demo"></p>
+    </center>
+    <script>
+        function hai(){
+        let g=document.getElementById('gend')
+        document.getElementById('demo').innerHTML=g.value;
+        //document.getElementById('gend').disabled=true
+        }
+
+    </script>
+</body>
+</html>

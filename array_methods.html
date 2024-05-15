@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const fruits=['apple','banana','lemon','mango']
+        //to find length of an array
+        console.log(fruits.length)
+        //to convert array to string
+        console.log(fruits.toString())
+        //by using join method
+        console.log(fruits.join())
+        console.log(fruits.join(','))
+        console.log(fruits.join('*'))
+       //pop method deletes and returns last element from an array
+        console.log(fruits.pop())//returns deleted element
+       //push method adds an elelment to array at the end
+        fruits.push('strawberry')
+        console.log(fruits.push('badam'))//return length after pushing
+        console.log(fruits)
+        //shift method deletes first element from array
+        console.log(fruits.shift())//returns deleted element
+        console.log(fruits)
+        //unshift method add  element at beggining of an array
+        console.log(fruits.unshift('kiwi'))//return length after unshift
+        console.log(fruits)
+        //modifying an element at specified IP
+        fruits[1]='guava'
+        console.log(fruits)
+        //adding an element at end based on length
+        fruits[fruits.length]='banana'
+        console.log(fruits)
+
+        //deleteing an element
+        delete fruits[0];
+        console.log(fruits)
+
+
+        //concat method to merges arrays
+        const myGirls = ["Cecilie", "Lone"];
+        const myBoys = ["Emil", "Tobias", "Linus"];
+        const arr3 = ["Robin", "Morgan"];
+        let all=myGirls.concat(myBoys)
+        console.log(all)
+        //also multiple arrays
+        all=myGirls.concat(myBoys,arr3)
+        console.log(all)
+        //flat method
+        const myArr = [[1,2],[3,4],[5,6],[{name:'mani'}]];
+        const arr=myArr.flat()
+        console.log(arr)
+
+        //splice method
+        let fru=[ 'guava', 'lemon', 'strawberry', 'badam', 'banana']
+        //deletes two values from ip2
+        fru.splice(2,2)
+        console.log(fru)
+        //add two values at ip2
+        fru.splice(2,0,'strawberry', 'badam')
+        console.log(fru)
+     //to remove holes
+     console.log(fruits)
+     fruits.splice(0,1)
+     console.log(fruits)
+     //slice method
+     let n=fruits.slice(2)
+     console.log(n)
+     //si and ei
+     n=fruits.slice(2,4)
+     console.log(n)
+    </script>
+</body>
+</html>

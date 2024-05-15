@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .myStyle {
+        background-color: coral;
+        padding: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dom Methods</h1>
+    <p id="demo"></p>
+    <div class="example">Element1</div>
+    <div class="example">Element2</div>
+
+    <div class="example">
+      <p>This is a paragraph.</p>
+    </div>
+    <br />
+    <div class="example color">
+      <p>This is a paragraph.</p>
+    </div>
+    <br />
+    <div class="example color">
+      <p>This is a paragraph.</p>
+    </div>
+
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+
+    <p>First Name: <input name="fname" type="text" value="Michael" /></p>
+    <p>
+      First Name: <input name="fname" type="text" value="Doug" id="fname" />
+    </p>
+    <div id="myDIV">
+      <h2 class="example">A heading with class="example" in div</h2>
+      <p class="example">A paragraph with class="example" in div.</p>
+    </div>
+    <div id="list">
+      <p>I am a myDIV.</p>
+      <button onclick="handleClick()">Add styles</button>
+    </div>
+    <script>
+      //id should be unique
+      //if multiple elements have same id then first element is taken
+      //getElementById returns null if wlwmwnt is not present
+      const ptagbyid = document.getElementById("demo");
+      ptagbyid.innerHTML = "Hello world";
+      //getElementsByClassName return array of all elements that matches the classname
+      const divtagsbyClassname = document.getElementsByClassName("example");
+      console.log(divtagsbyClassname);
+
+      //getting elements by multiple ClassNames
+      const collection = document.getElementsByClassName("example color");
+      collection[0].style.color = "red";
+
+      //getElementsByTagName returns all elements with tagName li
+      const elementsByTagename = document.getElementsByTagName("li");
+      console.log(elementsByTagename);
+      elementsByTagename[2].style.backgroundColor = "cyan";
+      //getElementsByName returns all elements with name as the fname
+      const elementsByName = document.getElementsByName("fname");
+      console.log(elementsByName);
+      elementsByName[0].value = "mani";
+      //querySelector is used to get first p tag from document
+      const firstptag = document.querySelector("p");
+      console.log(firstptag);
+      //also className to get first element with class example
+      console.log(document.querySelector(".example"));
+      //also id to get first element with id fname
+      console.log(document.querySelector("#fname"));
+      //querySelectorAll Selects all elements with class="example":
+      console.log(document.querySelectorAll(".example"));
+      const maindiv = document.getElementById("myDIV");
+      maindiv.querySelector(".example").style.backgroundColor = "fuchsia";
+      //classList.add is used to add a className to that element
+      const list = document.getElementById("list");
+      list.classList.add("second");
+      //classList.add is used to remove a className to that element
+      list.classList.remove("second");
+      const handleClick = () => {
+        //toggle is used to switch the classnames
+        list.classList.toggle("myStyle");
+      };
+    </script>
+  </body>
+</html>

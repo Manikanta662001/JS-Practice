@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //creating an object
+        const car = {carname:'Bmw',carcolour : 'black' , carweight : 1000 , carmodel : 2022}
+        console.log(car, JSON.stringify(car,(k,v)=>{if (k=='carmodel'){return undefined} return v},4))
+        //accessing object properties
+        console.log(car.carname)
+        console.log(car['carmodel'])
+        //adding more properties to object
+        
+        function hai(key,value){
+            const laptop ={name : 'hp' ,ram : 8 , ssd : 256 , price : 45000}
+            laptop[key]=value
+            console.log(laptop)
+        }
+        //it will add a new keyvalue pair
+        hai('model',2020)
+        
+        //this will update the key value pair
+        hai('model',2019)
+
+        //another way to create an object
+
+        var emp=new Object()
+        emp.id=1;
+        emp.name='ram';
+        emp.designation='UI trainee';
+        emp.address='HYB';
+        console.log(emp)
+    </script>
+</body>
+</html>

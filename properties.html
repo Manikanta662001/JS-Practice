@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <h1>The Element Object</h1>
+  <h2>The Differences Between innerText, innerHTML and textContent</h2>
+
+  <p id="myP"> This element has extra spacing and contains <span>a span element</span>.</p>
+
+  <button onclick="getinnerHTML()">Get innerHTML</button>
+  <button onclick="getinnerText()">Get innerText</button>
+  <button onclick="gettextContent()">Get textContent</button>
+
+  <pre id="demo"></pre>
+
+  <script>
+
+    function getinnerHTML() {
+      let text = document.getElementById("myP").innerHTML;
+      console.log(text)
+      document.getElementById("demo").innerText = text;
+    }
+    
+    function getinnerText() {
+      let text = document.getElementById("myP").innerText;
+      console.log(text)
+
+      document.getElementById("demo").innerText = text;
+    }
+
+
+
+    function gettextContent() {
+      let text = document.getElementById("myP").textContent;
+      console.log(text)
+
+      document.getElementById("demo").innerText = text;
+    }
+  </script>
+
+</body>
+
+</html>

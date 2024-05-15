@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //var keyword has global scope
+        var x='hello';
+        console.log(x)
+        //if we use var keyword redeclaration and reassignment is possible 
+        var x;
+        x='bye'
+        console.log(x)
+        {
+            console.log(x)
+            var x=30;
+            console.log(x)
+        }
+        
+        console.log(x)
+    </script>
+</body>
+</html>

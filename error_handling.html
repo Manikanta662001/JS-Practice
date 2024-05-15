@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        try
+        {
+            //aleeert('this is alert msg')
+            throw 'to big'
+        }
+        catch(err)
+        {
+            //console.log(err.message,err.name)
+            console.log(err,'==')
+        }
+        finally
+        {
+            console.log('if there is error or not this block executes')
+        }
+        //try-catch-finally
+        const add=(x,y)=>{
+            return x+y
+        }
+        console.log('START')
+        try{
+            let result = add(10,11)
+            console.log(result,'2525::')
+        }
+        catch(err){
+            console.log(err.name,'            ',err.message,';;;;')
+        }
+        finally{
+            console.log('irespective of error occurance')
+        }
+        console.log('END')
+//throw
+        const add1=(x,y)=>{
+            if (typeof x!=='number'){
+                throw 'first arguement is not a number'
+            }
+            if (typeof y!=='number'){
+                throw 'second arguement is not a number'
+            }
+            return x+y
+        }
+        try{
+            let rs= add1("5",2)
+            console.log(rs,'000')
+        }
+        catch(error){
+            console.error(error)
+        }
+    </script>
+</body>
+</html>

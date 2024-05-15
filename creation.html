@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS P-1</title>
+    <style>
+        table,
+        th {
+            border: 3px solid fuchsia;
+        }
+
+        td,
+        tr {
+            border: 3px dotted blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="input" placeholder="search....">
+        <input type="submit" value="submit">
+    </form><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody id='table-body'>
+
+        </tbody>
+    </table>
+    <script>
+        const data = [
+            { name: 'Ram', age: 24, gender: 'Male' },
+            { name: 'Ravi', age: 22, gender: 'Male' },
+            { name: 'Ramu', age: 29, gender: 'Male' },
+            { name: 'Rani', age: 25, gender: 'Female' }
+        ]
+
+        function generateTable(data) {
+            const tableBody = document.getElementById('table-body');
+            tableBody.innerHTML = ' ';
+            if (data.length === 0) {
+                const noDatar = document.createElement('tr');
+                const noDatacol = document.createElement('td');
+                noDatacol.setAttribute('colspan', '3');
+                noDatacol.textContent = 'No Data Found';
+                noDatar.append(noDatacol);
+                tableBody.append(noDatar);
+            }
+            else {
+                data.forEach(data => {
+                    const r = document.createElement('tr');
+                    Object.keys(data).forEach(key => {
+                        const col = document.createElement('td');
+                        console.log(key, data[key])
+                        col.textContent = data[key];
+                        r.append(col);
+                    });
+                    tableBody.append(r);
+                });
+            }
+        }
+        generateTable(data);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function Search(action) {
+            action.preventDefault();
+
+            const searcht = document.getElementById('input').value.toLowerCase();//ram
+
+            const fData = data.filter(item => {
+                return Object.values(item).some(value =>
+                    String(value).toLowerCase().includes(searcht)
+                );
+
+            });
+
+            generateTable(fData);
+        }
+
+        const searchForm = document.getElementById('form');
+        searchForm.addEventListener('submit', Search);
+
+
+    </script>
+</body>
+
+</html>

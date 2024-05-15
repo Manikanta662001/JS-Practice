@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let x='jhbckjwehvafkcuawegbjkasbckjAc'
+        //length of string
+        console.log(x.length)
+
+        //slicing
+        //syntax: slice(SI,EI)
+        let text = "Apple, Banana, Kiwi";
+        console.log(text.slice(7,13))
+        //if EI is not given it will display till length
+        console.log(text.slice(7))
+        // -ve indexing
+        console.log(text.slice(-4))
+        console.log(text.slice(-12,-6))
+        //substring
+
+        console.log(text.substring(7,13))
+        //difference between slice and substring is back to front not work in slice
+        console.log(text.substring(4,0))
+        console.log(text.slice(4,0))
+        //substr
+        // syntax: substr(SI,length)
+        console.log(text.substr(7,6))
+        //from 7 to rest of string
+        console.log(text.substr(7))
+        //from -7 to rest of string
+        console.log(text.substr(-7))
+
+        //repeat method is used to repeat a string number of times
+        console.log(text.repeat(4))
+        //replace method
+        //syntax : replace(old string,new string)
+        let str='hello this is js hello'
+        //replaces only first match
+        let newstr=str.replace('hello','hai')
+        console.log(newstr)
+        //case sensitive
+        str='Hello this is js hello'
+        
+        newstr=str.replace(/HELLO/i,'hai')
+        console.log(newstr)
+        //case sensitive and global search
+        str='Hello this is js hello heLLo'
+        newstr=str.replace(/HELLO/gi,'hai')
+        console.log(newstr)
+
+
+        //replaceAll method
+        let k = "I love cats. Cats are very easy to love. Cats are very popular."
+        newstr=k.replaceAll('cats','dogs')
+        console.log(newstr)
+        //case sensitive and global search
+        newstr=k.replaceAll(/cats/gi,'dogs')
+        console.log(newstr)
+
+        //toUpperCase method
+
+        str='Hello Javascript'
+        newstr=str.toUpperCase()
+        console.log(newstr)
+
+        //toLowerCase method
+
+        str='Hello Javascript'
+        newstr=str.toLowerCase()
+        console.log(newstr)
+
+        //concat method
+        //syntax: str.concat(joining character,another string)
+
+        str1='Hello'
+        str2='world'
+        str3=str1.concat(' ',str2)
+        console.log(str3)
+
+        //trim method
+        //syntax: str.trim()
+        str='             Hello Javascript         '
+        newstr=str.trim()
+        console.log(newstr)
+        
+        let s='5'
+        let res = s.padStart(4,'*')
+        console.log(res)
+
+        res=s.padEnd(6,'#')
+        console.log(res)
+
+
+        str='Hello Javascript'
+        let new1 = str.charAt(2)
+        console.log(new1)
+        new1= str.charCodeAt(7)
+        console.log(new1)
+        console.log(str.split(' '))
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

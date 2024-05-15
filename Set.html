@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p-tag"></p>
+    <script>
+        let x = new Set(['a','b','c','a',12])
+        console.log(x,typeof x,x instanceof Set)
+        x.add(1)
+        x.add([13,34])
+        //size method is used to get length
+        console.log(x,x.size)
+        let text =''
+        for (let i of x.values()){
+            text+=i
+        }
+        document.getElementById('p-tag').innerHTML = text
+        //has method is used to check the value present in set or not
+        console.log(x.has('a'),x.has('u'))
+        //delete method is used to delete the value present in set 
+        x.delete('a')
+        console.log(x)
+        //clear method is used to delete all values present in set 
+        x.clear()
+        console.log(x)
+
+    </script>
+</body>
+</html>

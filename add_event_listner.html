@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">click</button>
+    <h1 id="h1">before click</h1>
+
+    <h1 id="id2">this is js</h1>
+    <input type="text"  id="input1"><br><br>
+    <input type="text"  id="input3"><br><br>
+    <input type="text"  id="input2" placeholder="enter your name" ><br><br>
+    <script>
+        var btn=document.getElementById('btn')
+        //click event
+        btn.addEventListener('click',hai)
+        function hai(){
+          document.getElementById('h1').innerHTML='after click'
+        }
+        //dblclick event
+        btn.addEventListener('dblclick',hello)
+        function hello(){
+            //document.getElementById('h1').innerHTML='double click'
+            document.getElementsByTagName('h1')[0].innerHTML='on double click'
+          }
+        
+        var id=document.getElementById('id2')
+        //mouseover event
+        id.addEventListener('mouseover',mouse_over)
+        function mouse_over(){
+            //already we got it 
+            id.style.backgroundColor='cyan'
+            document.getElementById('id2').style.color='gold'
+        }
+        //focus event
+        var inp=document.getElementById('input2')
+        inp.addEventListener('focus',focus_f)
+        function focus_f(){
+            //already we got it 
+            inp.style.backgroundColor='red'
+            document.getElementById('input2').style.color='yellow'
+        }
+        //key event
+        var inp1=document.getElementById('input1')
+        inp1.addEventListener('keyup',key_up)
+        function key_up()
+        {
+            alert('key is pressed')
+        }
+        var inp3=document.getElementById('input3')
+        inp3.addEventListener('keydown',key_down)
+        function key_down()
+        {
+            alert('key is removed')
+        }
+    
+       
+    </script>
+    
+</body>
+</html>

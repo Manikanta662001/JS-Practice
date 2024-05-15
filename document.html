@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The Document Object</h1>
+<h2>The document.getElementsByName Method</h2>
+
+<p>First Name: <input name="fname" type="text" value="Michael"></p>
+<p>First Name: <input name="fname" type="text" value="Doug"></p>
+
+<p>The tag name of the first element with the name "fname" is:</p>
+
+<p id="demo"></p>
+
+
+    <script>
+        document.write('hello')
+        document.writeln('hai')
+        document.write('<br>')
+        document.writeln('next')
+        document.writeln('this is writeln method')
+        
+
+        let elements = document.getElementsByName("fname");
+        
+        document.getElementById("demo").innerHTML = elements[0].tagName;
+    </script>
+</body>
+</html>

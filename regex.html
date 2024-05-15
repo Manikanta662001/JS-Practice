@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let text = "Visit W3Schools";
+        let n = text.search(/W3Schools/i)
+        console.log(n)
+        n= text.replace(/W3Schools/i,'home')
+        console.log(n)
+        let result = text.match(/W3Schools/i)
+        console.log(result)
+        text = "Is this all there is?";
+        result = text.match(/is/g)
+        console.log(result)
+        result = /e/.test("The best things in life are free!");
+        console.log(result)
+        result = /e/.exec("The best things in life are free!");
+        console.log(result)
+
+    </script>
+</body>
+</html>

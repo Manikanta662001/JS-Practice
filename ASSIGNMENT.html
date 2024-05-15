@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS P-1</title>
+    <link rel="stylesheet" href="index.css">
+    
+  </head>
+  <body>
+    <h1>Adding of employees</h1>
+    <form id="data-form">
+      <input type="text" id="name-input" placeholder="Enter Name" required>
+      <input type="number" id="age-input" placeholder="Enter Age" required>
+      <input type="text" id="gender-input" placeholder="Enter Gender" required>
+      <input type="submit" value="Add">
+      
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Actions</th>
+          
+        </tr>
+      </thead>
+      <tbody id="table-body">
+
+      </tbody>
+    </table>
+
+
+<script>
+      const data = [];
+
+      function generateTable(d) {
+        const tableBody = document.getElementById('table-body');
+        tableBody.innerHTML = '';
+
+        d.forEach((data, index) => {
+          const row = document.createElement('tr');
+          Object.keys(data).forEach(key => {
+            const col = document.createElement('td');
+            col.textContent = data[key];
+            
+            row.append(col);
+          });
+
+          tableBody.append(row);
+        });
+      }
+      
+function addData(event) {
+        event.preventDefault();
+        const nameInput = document.getElementById('name-input');
+        const ageInput = document.getElementById('age-input');
+        const genderInput = document.getElementById('gender-input');
+
+        const name = nameInput.value.trim();
+        const age = ageInput.value.trim();
+        const gender = genderInput.value.trim();
+
+    
+        
+
+        if (!/^[a-zA-Z]+$/.test(name) || !/^[a-zA-Z]+$/.test(gender)) {
+          alert('Name and Gender fields should only contain letters');
+          return;
+        }
+       
+
+        data.push({ name, age, gender });
+        generateTable(data);
+      }
+
+      const dataForm = document.getElementById('data-form');
+      dataForm.addEventListener('submit', addData);
+
+      
+    </script>
+   
+  </body>
+</html>

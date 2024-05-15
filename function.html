@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>functions</h1>
+    <p id="one"></p>
+    <script>
+        //function declaration can be called before declaration
+        //hai()
+        
+        let x =hai()
+        console.log(x,'1414')
+        //function declaration
+        function hello(){
+            a=Number(prompt('enter value of a'))
+            b=Number(prompt('enter value of b'))
+            console.log(a * b)
+        }
+        //function calling
+        hello()
+        //function having return stmt
+        function hai(){
+            a=Number(prompt('enter value of a-'))
+            b=Number(prompt('enter value of b-'))
+            return a*b
+        }
+        //document.getElementById('one').innerHTML='value is ' +x
+
+        //function expression
+
+        let expression = function(){
+            console.log('function expression')
+        }
+        expression()
+
+        //arrow functions
+
+        let arrow = () =>
+        {
+            console.log('arrow function')
+        }
+        arrow()
+    </script>
+</body>
+</html>

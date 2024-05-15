@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getUser(id) {
+
+            if (id <= 0) {
+                return null;
+            }
+
+            return {
+                id: id,
+                username: 'admin',
+                profile: {
+                    avatar: '/avatar.png',
+                    language: 'English'
+                }
+            }
+        }
+        let user = getUser(-1)
+        let defaultProfile =  { default: '/default.png', language: 'English'};
+        // let profile = user && user.profile
+        // let profile = user?.profile 
+        let profile = user?.['profile'] ?? defaultProfile
+        let avatar = user?.profile?.avatar
+        console.log(profile,avatar)
+    </script>
+</body>
+
+</html>

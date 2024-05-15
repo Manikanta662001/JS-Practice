@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //break stmt
+        for (let i=0;i<=10;i++)
+        {
+            if (i==4){
+                break
+            }
+            console.log(i)
+        }
+        //continue stmt
+        for (let i=0;i<=10;i++)
+        {
+            if (i==4){
+                continue;
+            }
+            console.log(i)
+        }
+        //return stmt comes out of function/method
+        function hai(){
+            for (let i=0;i<=10;i++)
+            {
+                if (i==4)
+                {
+                    return ;
+                }
+                console.log(i)
+            }
+            console.log('hi')
+        }
+        hai()
+        console.log('hello')
+    </script>
+</body>
+</html>

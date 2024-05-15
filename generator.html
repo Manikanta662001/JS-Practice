@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function* generator(i){
+            yield i;
+            yield i+10;
+
+        }
+        const gen=generator(15)
+        console.log(gen)
+        console.log(gen.next())
+        console.log(gen.next())
+        // Declare a generator function with a single return value
+        function* gFunction() {
+          return 'Hello, World!'
+        }
+
+        // Assign the Generator object to generator
+        const g = gFunction();
+
+        // Call the next method on the Generator object
+       console.log(g.next()) ; //Output: {value: "Hello, World!", done: true}
+
+
+       
+
+// A generator function with multiple yields and a return
+function* fun() {
+    yield 'Value 1'
+    yield 'Value 2'
+    yield 'Value 3'
+    return 'Value 4'
+}
+ 
+const Generator = fun()
+ 
+// Call next four times
+console.log(Generator.next()) // {value: "Value 1", done: false}
+console.log(Generator.next()) // {value: "Value 2", done: false}
+console.log(Generator.next()) // {value: "Value 3", done: false}
+console.log(Generator.next()) // {value: "Value 4", done: true}
+console.log(Generator.next()) 
+    </script>
+</body>
+</html>

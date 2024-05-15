@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>events</title>
+</head>
+<body>
+    <!--onclick event-->
+    <button onclick="hai()">click</button>
+    <!--onmouseover event-->
+    <p onmouseover="hello()">keep cursor here</p>
+     <!--onmouseout event-->
+     <p onmouseout="xyz()">keep cursor away from here</p>
+     <!--onfocus event-->
+     <form>
+        <input type="text" id="input" onfocus="focused()">
+     </form><br><br>
+     <!--onkeydown event-->
+     <input type="text" name="in" id="in" onkeydown="key()">
+    <script>
+          function hai(){
+            alert('this is onclick event')
+          }
+          function hello(){
+            alert('this is onmouseover event')
+            //document.write('this is onmouseover event')
+          }
+          function xyz(){
+            alert('this is onmouseout event')
+            //document.write('this is onmouseout event')
+          }
+          function focused(){
+            
+            document.getElementById('input').style.background='cyan';
+          }
+          function key(){
+            alert('pressed a key in keyboard')
+          }
+    </script>
+</body>
+</html>

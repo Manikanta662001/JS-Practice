@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+  <h2>JavaScript switch</h2>
+
+  <p id="demo"></p>
+
+  <script>
+    let day;
+    switch (new Date().getDay()) {
+      case 0:
+        day = "Sunday";
+        break;
+      case 1:
+        day = "Monday";
+        break;
+      case 2:
+        day = "Tuesday";
+        break;
+      case 3:
+        day = "Wednesday";
+        break;
+      case 4:
+        day = "Thursday";
+        break;
+      case 5:
+        day = "Friday";
+        break;
+      case 6:
+        day = "Saturday";
+    }
+    document.getElementById("demo").innerHTML = "Today is " + day;
+
+    
+    let year=Number(prompt('enter year'))
+    let month=Number(prompt('enter a month'))
+    let text=''
+    
+    switch(month)
+    {
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+          text+='31 days'
+          break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+          text+='30days'
+          break;
+      case 2:
+          if (year%400===0 ||(year%4===0 && year%100!==0))
+    
+            {
+              text+='29 days'
+            }
+          else
+          {
+            text+='28 days'
+          }
+          break
+          default:
+          text+='invalid input'
+        }
+        document.getElementById('demo').innerHTML=text
+        
+        
+  </script>
+
+</body>
+
+</html>

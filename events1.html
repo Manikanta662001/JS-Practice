@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" onclick="hai()">Click me</button>
+    <button id="btn" ondblclick="hello()">Click me</button>
+    <h1 onmouseover="mouseover()" onmouseout="mouseout()">onmouse events</h1>
+    <p id="demo"></p>
+
+    <input type="text" name="text"  id="id2" onfocus="foc()">
+    
+    <div>
+        <input type="text" name="text"  id="name" onblur="myFunction()">
+    </div>
+    <script>
+       function hai()
+       {
+        alert('Button is clicked one time')
+       }
+       function hello()
+       {
+        alert('Button is clicked two times')
+       }
+       function mouseover()
+       {
+        document.getElementById('demo').innerHTML='mouseoverevent'
+       }
+       function mouseout()
+       {
+        document.getElementById('demo').innerHTML='mouseoutevent'
+       }
+       function foc()
+       {
+        document.getElementById('id2').style.color='aqua'
+        document.getElementById('id2').style.backgroundColor='red'
+       }
+
+       function myFunction(){
+            var x=document.getElementById('name');
+            x.value=x.value.toUpperCase();
+
+       }
+    </script>
+</body>
+</html>

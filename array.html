@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //arrays
+        //arrays are also called as objects
+        const fruits = ["Banana", "Orange", "Apple", "Mango"];
+        console.log(fruits.toString())
+        console.log(fruits.length)
+        console.log(typeof fruits)
+        console.log(fruits instanceof Array)
+        console.log(Array.isArray(fruits))
+        //objects
+
+        const emp={empid:1,empname:'mani',age:22}
+        console.log(emp.toString())
+        //it is used to convert object to string
+        console.log(JSON.stringify(emp,(k,v)=>{
+                if (k=="age"){
+                    return undefined
+                }
+                return v
+        },4))
+        //reconverting string to object
+        x=JSON.stringify(emp)
+        console.log(JSON.parse(x))
+    </script>
+</body>
+</html>
