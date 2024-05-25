@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        let date=new Date()
-        console.log(date)
-        date=new Date('2023-06-06')
-        console.log(date)
-        date=new Date('January 13,2023 6:30:12')
-        console.log(date)
-        date=new Date(2023,11,10,7,45,33,1000)
-        console.log(date)
-        //0-january and 11-December
-        date=new Date(2023,11,10,7,45,33,1000)
-        console.log(date)
-        //if we give more than 11 it will accept
-        date=new Date(2023,16,10,7,45,33,1000)
-        console.log(date)
-        date = new Date(2018, 11, 24, 10, 33);
-        console.log(date)
-        date = new Date(2018, 11, 24, 10);
-        console.log(date)
-        date = new Date(2018, 11, 24);
-        console.log(date)
-        date = new Date(2018, 11);
-        console.log(date)
-        //if we give just year it will consider it as milliseconds
-        date = new Date(2018);
-        console.log(date)
-        
-        date = new Date(99, 11, 24);
-        console.log(date)
-        date = new Date(9, 11, 24);
-        console.log(date)
+      let date = new Date();
+      console.log(date);
+      date = new Date("2023-06-06");
+      console.log(date);
+      date = new Date("January 13,2023 6:30:12");
+      console.log(date);
+      date = new Date(2023, 11, 10, 7, 45, 33, 1000);
+      console.log(date);
+      //0-january and 11-December
+      date = new Date(2023, 11, 10, 7, 45, 33, 1000);
+      console.log(date);
+      //if we give more than 11 it will accept
+      date = new Date(2023, 16, 10, 7, 45, 33, 1000);
+      console.log(date);
+      date = new Date(2018, 11, 24, 10, 33);
+      console.log(date);
+      date = new Date(2018, 11, 24, 10);
+      console.log(date);
+      date = new Date(2018, 11, 24);
+      console.log(date);
+      date = new Date(2018, 11);
+      console.log(date);
+      //if we give just year it will consider it as milliseconds
+      date = new Date(2018);
+      console.log(date);
+
+      date = new Date(99, 11, 24);
+      console.log(date);
+      date = new Date(9, 11, 24);
+      console.log(date);
+      // converting date to UTC string
+      let dateString = "2024-05-14T02:31:20.106618";
+      let dateObj = new Date(dateString + "Z");
+      let utcString = dateObj.toISOString();
+      console.log({ dateString, dateObj, utcString });
     </script>
-</body>
+  </body>
 </html>
