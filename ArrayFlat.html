@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const mainFlat = (array, depth) => {
+            const result = [];
+            const getArr = (arr, level) => {
+                for (let x of arr) {
+                    if (Array.isArray(x) && level < depth) {
+                        getArr(x, level + 1);
+                    } else {
+                        result.push(x)
+                    }
+                }
+            }
+            getArr(array, 0);
+            return result;
+        }
+        const flattedArray = mainFlat([1, 2, 3, [4, [5, 6, [8, 9]], [7]]], 2);
+        console.log("FLATTED:::::", flattedArray)
+    </script>
+</body>
+
+</html>

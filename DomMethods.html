@@ -30,7 +30,7 @@
     </div>
 
     <ul>
-      <li>Coffee</li>
+      <li class="coffee">Coffee</li>
       <li>Tea</li>
       <li>Milk</li>
     </ul>
@@ -47,6 +47,7 @@
       <p>I am a myDIV.</p>
       <button onclick="handleClick()">Add styles</button>
     </div>
+    <p id="matched" class="dummy testing"></p>
     <script>
       //id should be unique
       //if multiple elements have same id then first element is taken
@@ -59,6 +60,7 @@
 
       //getting elements by multiple ClassNames
       const collection = document.getElementsByClassName("example color");
+      console.log(collection);
       collection[0].style.color = "red";
 
       //getElementsByTagName returns all elements with tagName li
@@ -83,12 +85,29 @@
       //classList.add is used to add a className to that element
       const list = document.getElementById("list");
       list.classList.add("second");
-      //classList.add is used to remove a className to that element
+      //classList.remove is used to remove a className to that element
       list.classList.remove("second");
       const handleClick = () => {
         //toggle is used to switch the classnames
         list.classList.toggle("myStyle");
       };
+      //matches is used to match the element css selector
+      const ele = document.getElementById("matched");
+      if (ele.matches(".dummy")) {
+        console.log("Match is Working");
+      }
+      //it will match either dummy CN or testing CN
+      if (ele.matches(".dummy", ".testing")) {
+        console.log("Match is Working with two classnames");
+      }
+
+      //parentElement getting
+      const exampleElement = document.querySelector(".coffee");
+      console.log(exampleElement.parentElement, exampleElement.parentNode);
+      //innerText,textContent,innerHtml
+      console.log(document.getElementById("myDIV").innerText);
+      console.log(document.getElementById("myDIV").innerHTML);
+      console.log(document.getElementById("myDIV").textContent);
     </script>
   </body>
 </html>
