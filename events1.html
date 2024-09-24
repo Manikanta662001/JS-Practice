@@ -1,49 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <button id="btn" onclick="hai()">Click me</button>
     <button id="btn" ondblclick="hello()">Click me</button>
     <h1 onmouseover="mouseover()" onmouseout="mouseout()">onmouse events</h1>
     <p id="demo"></p>
 
-    <input type="text" name="text"  id="id2" onfocus="foc()">
-    
+    <input type="text" name="text" id="id2" onfocus="foc()">
+
     <div>
-        <input type="text" name="text"  id="name" onblur="myFunction()">
+        <input type="text" name="text" id="name" onblur="myFunction()">
+    </div>
+    <div>
+        <button onmousedown="mouseEvents(event)">Click me using mouse</button>
     </div>
     <script>
-       function hai()
-       {
-        alert('Button is clicked one time')
-       }
-       function hello()
-       {
-        alert('Button is clicked two times')
-       }
-       function mouseover()
-       {
-        document.getElementById('demo').innerHTML='mouseoverevent'
-       }
-       function mouseout()
-       {
-        document.getElementById('demo').innerHTML='mouseoutevent'
-       }
-       function foc()
-       {
-        document.getElementById('id2').style.color='aqua'
-        document.getElementById('id2').style.backgroundColor='red'
-       }
+        function hai() {
+            alert('Button is clicked one time')
+        }
+        function hello() {
+            alert('Button is clicked two times')
+        }
+        function mouseover() {
+            document.getElementById('demo').innerHTML = 'mouseoverevent'
+        }
+        function mouseout() {
+            document.getElementById('demo').innerHTML = 'mouseoutevent'
+        }
+        function foc() {
+            document.getElementById('id2').style.color = 'aqua'
+            document.getElementById('id2').style.backgroundColor = 'red'
+        }
 
-       function myFunction(){
-            var x=document.getElementById('name');
-            x.value=x.value.toUpperCase();
+        function myFunction() {
+            var x = document.getElementById('name');
+            x.value = x.value.toUpperCase();
 
-       }
+        }
+        function mouseEvents(event) {
+            if (event.button === 0) {
+                console.log('EV::::', "Left side mouse button is clicked");
+            }
+            else if (event.button === 1) {
+                console.log('EV::::', "middle mouse button is clicked");
+            }
+            else if (event.button === 2) {
+                console.log('EV::::', "right side mouse button is clicked");
+            }
+        }
     </script>
 </body>
+
 </html>
