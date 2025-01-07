@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.
+min.js"></script>
+  </head>
+  <body ng-app="myapp" ng-init="quantity=2;cost=5;names=['Jani','Hege','Kai']">
+    <div ng-controller="HelloController">
+      <h2>Welcome to {{helloTitle.name}} Application</h2>
+    </div>
+    <p>
+      Enter your name:
+      <input type="text" placeholder="Enter Name" ng-model="name" />
+    </p>
+    <p>Hello <span ng-bind="name"></span></p>
+    <p>Hello {{name}}</p>
+    <p>Quantity: <input type="number" ng-model="quantity" /></p>
+    <p>Costs: <input type="number" ng-model="cost" /></p>
+    <p>Total cost is : {{(quantity * cost) | currency}}</p>
+    <ul>
+      <li ng-repeat="x in names">{{x}}</li>
+    </ul>
+    <div ng-controller="PersonController">
+      <p>
+        Enter your FirstName:
+        <input type="text" placeholder="Enter FirstName" ng-model="firstName" />
+      </p>
+      <p>
+        Enter your LastName:
+        <input type="text" placeholder="Enter LastName" ng-model="lastName" />
+      </p>
+      <p>FirstName : {{firstName | uppercase}}</p>
+      <p>LastName : {{lastName | lowercase}}</p>
+      <p>FullName : {{getFullName() | uppercase}}</p>
+      <p><input type="text" ng-model="test" /></p>
+      <ul>
+        <li ng-repeat="i in countryNames | filter:test | orderBy:'country'">
+          {{i.name+','+i.country}}
+        </li>
+      </ul>
+    </div>
+    <div ng-controller="CustomersController">
+      <div ng-if="errorMessage" style="color: red">{{errorMessage}}</div>
+      <ul ng-if="users">
+        <li ng-repeat="user in users">
+          {{$index+1}}.{{user.username}} - {{ user.email }}
+        </li>
+      </ul>
+      <input type="checkbox" ng-model="mySwitch" />
+      <button ng-disabled="mySwitch">Click Me</button>
+      <p ng-show="myPara">I am visible.</p>
+      <input type="checkbox" ng-model="myPara" />
+      <p ng-hide="true">I am not visible.</p>
+      <p>{{count}}</p>
+      <button ng-click="count=count+1">+</button>
+      <button ng-click="count=count-1">-</button>
+      <button ng-click="count=count-count">Reset</button>
+    </div>
+    <div ng-controller="FormCtrl">
+      <form novalidate>
+        <p><label>Name:</label> <input type="text" ng-model="user.name" /></p>
+        <p>
+          <label>Email:</label>
+          <input type="text" ng-model="user.email" />
+        </p>
+        <button ng-click="reset()">Reset</button>
+        <p>form = {{user}}</p>
+        <p>master = {{master}}</p>
+      </form>
+    </div>
+    <script>
+      const app = angular.module("myapp", []);
+      app.controller("HelloController", function ($scope) {
+        $scope.helloTitle = {};
+        $scope.helloTitle.name = "Angular";
+      });
+      app.controller("PersonController", function ($scope) {
+        $scope.firstName = "";
+        $scope.lastName = "";
+        $scope.getFullName = () => {
+          return $scope.firstName + " " + $scope.lastName;
+        };
+        $scope.countryNames = [
+          { name: "Jani", country: "Norway" },
+          { name: "Hege", country: "Sweden" },
+          { name: "Kai", country: "Denmark" },
+        ];
+      });
+      app.controller("CustomersController", function ($scope, $http) {
+        $http.get("https://jsonplaceholder.typicode.com/users").then(
+          (response) => {
+            console.log("RES::::", response);
+            $scope.users = response.data;
+          },
+          (error) => {
+            console.log("ERR::::", error);
+            $scope.errorMessage = "Failed to Fetch";
+          }
+        );
+        $scope.mySwitch = false;
+        $scope.myPara = true;
+        $scope.count = 0;
+      });
+      app.controller("FormCtrl", function ($scope) {
+        $scope.master = { name: "Vamsi", email: "vamsi@gmail.com" };
+        $scope.reset = function () {
+          $scope.user = angular.copy($scope.master);
+        };
+      });
+    </script>
+  </body>
+</html>
