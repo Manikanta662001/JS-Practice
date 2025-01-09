@@ -71,6 +71,33 @@ min.js"></script>
         <p>master = {{master}}</p>
       </form>
     </div>
+    <form ng-controller="validateCtrl" name="myForm" novalidate>
+      <p>
+        <label>UserName:</label>
+        <input type="text" ng-model="user" name="user" required />
+        <span
+          ng-show="myForm.user.$dirty && myForm.user.$invalid && myForm.user.$error.required"
+          style="color: red"
+          >UserName is Required</span
+        >
+      </p>
+      <p>
+        <label>Email:</label>
+        <input type="email" ng-model="email" name="email" required />
+        <span
+          ng-show="myForm.email.$dirty && myForm.email.$invalid && myForm.email.$error.required"
+          style="color: red"
+          >Email is Required</span
+        >
+      </p>
+      <p>
+        <input
+          type="submit"
+          value="submit"
+          ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid"
+        />
+      </p>
+    </form>
     <script>
       const app = angular.module("myapp", []);
       app.controller("HelloController", function ($scope) {
@@ -110,6 +137,11 @@ min.js"></script>
           $scope.user = angular.copy($scope.master);
         };
       });
+      app.controller("validateCtrl", function ($scope) {
+        $scope.user = "Hello";
+        $scope.email = "hello@gmail.com";
+      });
+      console.log('LOWERCASE::::',angular.lowercase('JoHn'))
     </script>
   </body>
 </html>
