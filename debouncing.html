@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="food">Food: </label>
+    <input type="text" name="food" id="food" />
+    <script>
+      const inputElement = document.getElementById("food");
+      const printInputText = (text) => {
+        console.log("TEXT::::", text);
+      };
+      const debounce = (fn, delay) => {
+        let timeoutId = null;
+        return function (text) {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => {
+            fn(text);
+          }, delay);
+        };
+      };
+      const debounceFn = debounce(printInputText, 2000);
+      inputElement.addEventListener("input", (event) => {
+        debounceFn(event.target.value);
+      });
+    </script>
+  </body>
+</html>
