@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        position: relative;
+        left: 50%;
+        top: 50px;
+        width: fit-content;
+      }
+      p,
+      .bye {
+        padding: 10px;
+        border: 1px solid;
+        width: fit-content;
+        cursor: pointer;
+      }
+      .bye {
+        position: relative;
+      }
+      .card-box {
+        position: absolute;
+      }
+      .top .card-box {
+        bottom: 100%;
+        margin-bottom: 20px;
+      }
+      .left .card-box {
+        right: 100%;
+        top: 0%;
+        margin-right: 20px;
+      }
+      .right .card-box {
+        left: 100%;
+        top: 0%;
+        margin-left: 20px;
+      }
+      .bottom .bye::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid red;
+        position: absolute;
+        top: -7px;
+        left: calc(50% - 7px);
+        background-color: #fff;
+        border-right: none;
+        border-bottom: none;
+        transform: rotate(45deg);
+      }
+      .top .bye::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid red;
+        position: absolute;
+        bottom: -7px;
+        left: calc(50% - 7px);
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+        background-color: #fff;
+      }
+      .left .bye::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid red;
+        position: absolute;
+        right: -7px;
+        top: calc(50% - 6px);
+        border-top: none;
+        border-left: none;
+        transform: rotate(-45deg);
+        background-color: #fff;
+      }
+      .right .bye::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1px solid red;
+        position: absolute;
+        left: -6px;
+        top: calc(50% - 6px);
+        border-top: none;
+        border-left: none;
+        transform: rotate(135deg);
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper top">
+      <p>helo</p>
+      <div class="card-box">
+        <div class="bye">bye</div>
+      </div>
+    </div>
+    <div>
+      <div>dhfiodhfiowjfoweij</div>
+    </div>
+  </body>
+</html>

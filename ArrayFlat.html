@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        const mainFlat = (array, depth) => {
-            const result = [];
-            const getArr = (arr, level) => {
-                for (let x of arr) {
-                    if (Array.isArray(x) && level < depth) {
-                        getArr(x, level + 1);
-                    } else {
-                        result.push(x)
-                    }
-                }
+      // one way
+      const mainFlat = (array, depth) => {
+        const result = [];
+        const getArr = (arr, level) => {
+          for (let x of arr) {
+            if (Array.isArray(x) && level < depth) {
+              getArr(x, level + 1);
+            } else {
+              result.push(x);
             }
-            getArr(array, 0);
-            return result;
+          }
+        };
+        getArr(array, 0);
+        return result;
+      };
+      const flattedArray = mainFlat([1, 2, 3, [4, [5, 6, [8, 9]], [7]]], 2);
+      console.log("FLATTED:::::", flattedArray);
+      // second way
+      const flattenArray = (array) => {
+        let result = [];
+        for (let ele of array) {
+          if (Array.isArray(ele)) {
+            result.push(...flattenArray(ele));
+          } else {
+            result.push(ele);
+          }
         }
-        const flattedArray = mainFlat([1, 2, 3, [4, [5, 6, [8, 9]], [7]]], 2);
-        console.log("FLATTED:::::", flattedArray)
+        return result;
+      };
+      console.log(
+        "FLATTENARRAY:::",
+        flattenArray([10, 20, 46, [26, 47, [94, 37]], 27, [14, 93]])
+      );
     </script>
-</body>
-
+  </body>
 </html>

@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
-    <h1 title="hai" id="ha" style="color: brown;">This is h1</h1>
-    <button onclick="document.getElementById('ha').title='bjcksbdjk'">click</button>
-    <button onclick="document.getElementById('ha').style.color='cyan'">click</button>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script>
+        console.log("HEAD:::::",document.body)
+    </script>
+  </head>
+  <body>
+    <h1 title="hai" id="ha" style="color: brown">This is h1</h1>
+    <button onclick="document.getElementById('ha').title='bjcksbdjk'">
+      click
+    </button>
+    <button onclick="document.getElementById('ha').style.color='cyan'">
+      click
+    </button>
     <i class="glyphicon glyphicon-cloud"></i>
-</body>
+    <script>
+      let controller = new AbortController();
+      setTimeout(() => controller.abort(), 100);
+      const fetchingData = async () => {
+        try {
+          let response = await fetch("https://fakestoreapi.com/products", {
+            signal: controller.signal,
+          });
+        } catch (err) {
+          if (err.name == "AbortError") {
+            // handle abort()
+            console.log("Aborted::::", err);
+          } else {
+            throw err;
+          }
+        }
+      };
+      fetchingData();
+      console.log("BODY:::::",document.body)
+    </script>
+  </body>
 </html>
