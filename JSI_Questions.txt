@@ -1,0 +1,236 @@
+1. Difference between Promises and async/await?.
+Ans. Promises and async/await are both used to handle asynchronous operations in JavaScript, but they differ 
+in syntax, readability, and how errors are handled.
+--> A Promise is an Object that may be either fulfilled or rejected.
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data received");
+    }, 1000);
+  });
+}
+
+fetchData()
+  .then(data => console.log(data))   // "Data received"
+  .catch(err => console.error(err));
+
+
+--> async/await is syntactic sugar over Promises that makes asynchronous code look more like synchronous code,
+ improving readability.
+
+ async function getData() {
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+getData();
+--------------------------END-------------------------------------
+2. What are callback functions, and where are they used?.
+Ans. A callback function is a function that is passed as an argument to another function and is executed later,
+ usually after some operation is completed.
+
+ function greet(name) {
+  console.log("Hello, " + name);
+}
+
+function processUserInput(callback) {
+  const name = "Alice";
+  callback(name); // callback is invoked here
+}
+
+processUserInput(greet); // Output: "Hello, Alice"
+--> Callback Functions Used
+   --> to execute Asynchronous Code.
+        setTimeout(() => {
+            console.log("This runs after 2 seconds");
+        }, 2000);
+   --> to handle Events.
+        document.getElementById('btn').addEventListener('click', () => {
+            console.log('Button clicked!');
+        });
+
+--------------------------END-------------------------------------
+3.What is Event Delegation in JavaScript?
+Ans. Event Delegation is a technique in JavaScript where a single event listener is added 
+to a parent element to handle events triggered by its child elements.
+---> This works because of event bubbling — when an event occurs on an element, it bubbles
+ up to its ancestors.
+
+
+ <div id="parent">
+  <button data-id="1">Button 1</button>
+  <button data-id="2">Button 2</button>
+  <button data-id="3">Button 3</button>
+</div>
+document.getElementById('parent').addEventListener('click', function (e) {
+  if (e.target.tagName === 'BUTTON') {
+    console.log('Clicked button with ID:', e.target.dataset.id);
+  }
+});
+
+Why use Event Delegation?
+✅ Performance: Fewer event listeners, especially with many child elements.
+
+✅ Dynamic Content: Handles events for elements added later to the DOM.
+
+✅ Cleaner Code: One handler to rule them all.
+--------------------------END-------------------------------------
+4. Explain Hoisting in JavaScript?.
+Ans. Hoisting is JavaScript’s default behavior of moving declarations (but not initializations) to the top 
+ of their scope before the code is executed.
+
+--> When you declare variables or functions, JavaScript hoists them to the top of their scope (function or 
+    global), so they can be used before they are declared.
+--> var variables and function declarations are hoisted to top.
+--------------------------END-------------------------------------
+5. What is a Call Stack in JavaScript?
+Ans. A Call stack is a data structure that uses the Last In, First Out (LIFO) principle.
+--> JavaScript uses a Call Stack to track the function calls in a program.
+--> The JavaScript engine also uses a call stack to manage execution contexts:
+        1.The global execution context
+        2.Function execution contexts
+🔁 How It Works:
+    -->When a function is called, it's added (pushed) to the stack.
+    
+    -->When the function returns, it's removed (popped) from the stack.
+    
+    -->The stack works on a LIFO principle — Last In, First Out.
+
+
+function greet() {
+  sayHi();
+}
+
+function sayHi() {
+  console.log("Hello!");
+}
+
+greet();
+
+🧱 Call Stack Flow:
+greet() is called → pushed to the stack
+
+Inside greet(), sayHi() is called → pushed to the stack
+
+sayHi() logs "Hello!" → then popped off
+
+greet() completes → then popped off
+
+✔️ Stack is now empty again.
+--------------------------END-------------------------------------
+5. What is Event Loop?.Explain.
+Ans. The event loop is a crucial mechanism in JavaScript that enables it to handle 
+asynchronous operations efficiently, even though JavaScript is single-threaded.
+JavaScript executes code in the following phases:
+--> Call Stack: Executes all synchronous code (top-down).
+
+--> Web APIs / Browser APIs: Handles asynchronous tasks (e.g., setTimeout, fetch).
+
+--> Callback Queue: Stores callback functions waiting to be executed.
+
+--> Event Loop: Continuously checks if the call stack is empty, and if so, pushes callbacks from the queue to the stack.
+
+Synchronous code  -->  Call Stack
+Async code (e.g., setTimeout) --> Web APIs
+                          ↓
+                   Callback Queue
+                          ↓
+                    [Event Loop]
+                          ↓
+                   Back to Call Stack
+Example:
+----------
+console.log('1');
+
+setTimeout(() => {
+  console.log('2');
+}, 0);
+
+console.log('3');
+output:
+---------
+1
+3
+2
+--------------------------END-------------------------------------
+6. Call by ref vs value in react?.
+Ans. 
+Concept	               Call by Value	                            Call by Reference
+-------------------------------------------------------------------------------------
+Data type	             Primitive types (e.g., number, string)	    Non-primitive types (e.g., objects, arrays)
+What is passed	       A copy of the value	                      A reference to the actual object
+Mutation	             Does not affect original	                  Does affect original
+
+Call by Value – Example
+function updateNumber(x) {
+  x = x + 1;
+  console.log(x); // 6
+}
+
+let num = 5;
+updateNumber(num);
+console.log(num); // 5 (unchanged)
+➡️ num is a primitive, so a copy is passed. The original remains unchanged.
+
+Call by Reference – Example
+
+function updateUser(user) {
+  user.name = "Alice";
+}
+
+const userObj = { name: "Bob" };
+updateUser(userObj);
+console.log(userObj.name); // "Alice"
+➡️ userObj is an object, so its reference is passed. The original is mutated.
+--------------------------END-------------------------------------
+7.Difference between Stack and Heap memory.
+Ans. 
+🧱 Stack	                                                   🌳 Heap
+--------------------------------------------------------------------------------------------------
+Stores primitive values and function calls	                  Stores objects and complex data
+Uses LIFO (Last In, First Out) structure	                    No strict structure (more flexible)
+Fast memory allocation	                                      Slower, but handles large, complex data
+Memory is automatically freed when function exits	            Garbage collected over time
+Has a limited size	                                          Has a larger memory space
+
+✅ What Goes in the Stack?
+Primitive data types: number, string, boolean, null, undefined, symbol
+
+Function calls
+
+Reference variables (but not the object data itself).
+
+let name = "Alice";
+let age = 30;
+
+Both name and age are stored in the stack.
+
+✅ What Goes in the Heap?
+Objects
+
+Arrays
+
+Functions (as objects).
+
+const person = {
+  name: "Alice",
+  age: 30,
+};
+The reference to person is stored in the stack
+The actual { name: "Alice", age: 30 } object is stored in the heap
+--------------------------END-------------------------------------
+8. What is setTimeout and setInterval in JavaScript?
+Ans. Both setTimeout and setInterval are asynchronous timer functions provided by the browser
+(or Node.js) to schedule code execution after a delay.
+🔹 setTimeout
+Runs a function once after a specified delay.
+✅ Syntax:
+setTimeout(callback, delayInMilliseconds);
+🔹 setInterval
+Runs a function repeatedly at fixed time intervals.
+✅ Syntax:
+setInterval(callback, intervalInMilliseconds);

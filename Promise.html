@@ -1,49 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>JavaScript Promise Demo</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-        <div id="message"></div>
-        <button id="btnGet">Get Message</button>
+      <div id="message"></div>
+      <button id="btnGet">Get Message</button>
     </div>
     <script>
-function load(url) {
-  return new Promise((resolve, reject)=> {
-    const request = new XMLHttpRequest();
-    request.open('GET', url, true);
-    request.send();
-    console.log(request,'REQ')
-    request.onload= ()=>{
-        if (request.status == 200) {
-        resolve(request.responseText);
-      } else {
-        reject(request.status);
+      function load(url) {
+        return new Promise((resolve, reject) => {
+          const request = new XMLHttpRequest();
+          request.open("GET", url, true);
+          request.send();
+          console.log(request, "REQ");
+          request.onload = () => {
+            if (request.status == 200) {
+              resolve(request.responseText);
+            } else {
+              reject(request.status);
+            }
+          };
+        });
       }
-      }
-    
-  });
-}
 
-const url = 'https://jsonplaceholder.typicode.com/comments';
-const btn = document.querySelector('#btnGet');
-const msg = document.querySelector('#message');
+      const url = "https://jsonplaceholder.typicode.com/comments";
+      const btn = document.querySelector("#btnGet");
+      const msg = document.querySelector("#message");
 
-btn.addEventListener('click', () => {
-  load(url).then((response) => {
-      console.log(response,'====')
-      const result = JSON.parse(response);
-      console.log(result,'111')
-      msg.innerHTML = result;
-    })
-    .catch((error) => {
-      msg.innerHTML = `Error getting the message, HTTP status: ${error}`;
-    });
-});
+      btn.addEventListener("click", () => {
+        load(url)
+          .then((response) => {
+            console.log(response, "====");
+            const result = JSON.parse(response);
+            console.log(result, "111");
+            msg.innerHTML = result;
+          })
+          .catch((error) => {
+            msg.innerHTML = `Error getting the message, HTTP status: ${error}`;
+          });
+      });
 
-   
+      let pr1 = new Promise((res, rej) => res("pr1"));
+      let pr2 = new Promise((res, rej) => res("pr2"));
+      let pr3 = new Promise((res, rej) => rej("pr3 error"));
+      Promise.all([pr1, pr2, pr3])
+        .then((res) => {
+          console.log(res, "===all===");
+        })
+        .catch((err) => {
+          console.log(err, "===all error===");
+        });
+      Promise.any([pr1, pr2, pr3])
+        .then((res) => {
+          console.log(res, "===any===");
+        })
+        .catch((err) => {
+          console.log(err, "===any error===");
+        });
+      Promise.allSettled([pr1, pr2, pr3])
+        .then((res) => {
+          console.log(res, "===allSettled===");
+        })
+        .catch((err) => {
+          console.log(err, "===allSettled error===");
+        });
+      const pr4 = new Promise((resolve) => setTimeout(resolve, 100, "pr4"));
+      const pr5 = new Promise((resolve) => setTimeout(resolve, 50, "pr5"));
+
+      Promise.race([pr4, pr5])
+        .then((result) => console.log(result, "===race==="))
+        .catch((err) => {
+          console.log(err, "===race error===");
+        });
     </script>
-</body>
+  </body>
 </html>
