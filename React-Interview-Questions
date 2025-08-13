@@ -1,0 +1,4 @@
+1. What is ReactJS?
+A.ReacctJs is a open-source frontend Javasript library used for building user interfaces, especially for single page applications.It uses a component-based architecture and a virtual DOM for fast updates.React allows us to create reusable UI components.
+2. what is virtual DOM?
+A. Virtual DOM is a light weight copy of actual DOM. When state changes, React updates this Virtual DOM first and then compare with real DOM and updates it.
