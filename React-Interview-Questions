@@ -1,4 +1,65 @@
 1. What is ReactJS?
-A.ReacctJs is a open-source frontend Javasript library used for building user interfaces, especially for single page applications.It uses a component-based architecture and a virtual DOM for fast updates.React allows us to create reusable UI components.
+A.ReactJs is a open-source frontend Javasript library developed by facebook used for building user interfaces, especially for single page applications.It uses a component-based architecture and a virtual DOM for fast updates.React allows us to create reusable UI components.
+- Component-based: Breaks UI into reusable pieces.
+- Declarative: You describe what UI should look like, and React handles rendering.
+- Virtual DOM: Improves performance by minimizing direct DOM manipulations.
+- Unidirectional data flow: Data flows from parent to child components.
+
 2. what is virtual DOM?
 A. Virtual DOM is a light weight copy of actual DOM. When state changes, React updates this Virtual DOM first and then compare with real DOM and updates it.
+
+3. Controlled vs Uncontrolled Components
+Controlled: Form data is managed by React state.
+const [value, setValue] = useState('');
+<input value={value} onChange={e => setValue(e.target.value)} />
+Uncontrolled: Form data is handled by the DOM itself, accessed using ref.
+const inputRef = useRef();
+<input ref={inputRef} />
+
+4. What are Hooks in ReactJS?
+Hooks are functions that allows you use state and other React features in functional components.
+Common hooks:
+- useState → Manage state.
+- useEffect → Handle side effects (API calls, event listeners).
+- useMemo → Memoize computed values.
+- useCallback → Memoize functions.
+- useRef → Access DOM elements or store mutable values.
+- useContext → Access context values.
+
+5. What is JSX, Babel, Webpack?
+JSX: JSX is JavaScript XML — JSX allows writing HTML-like syntax directly within JavaScript files. With JSX you can write expressions inside curly braces { }.
+const myElement = <h1>React is {5 + 5} times better with JSX</h1>;
+Babel: JavaScript compiler that converts JSX and modern ES6+ code to browser-compatible JavaScript.
+Webpack: Module bundler that packages JS, CSS, images, etc., into optimized files for the browser.
+
+6. What is Redux?
+A predictable state management library for JavaScript applications.
+- store holds the entire app state.
+- State can only be changed via actions processed by reducers.
+- Supports middleware for async tasks.
+
+7. What is Reducer, Action, Store in Redux?
+Action: Object describing what happened.
+{ type: 'INCREMENT', payload: 1 }
+Reducer: Pure function that takes current state + action, returns new state.
+Store: Single source of truth that holds the entire state tree.
+
+8. What is Redux-Thunk?
+A middleware that allows you to return functions from actions instead of plain objects, enabling async operations like API calls.
+
+9.what are keys in reactjs
+a.Keys in React are unique identifiers for elements in a list. Keys allows React to efficiently update and re-render only the changed items.
+
+10.Debouncing and Throttling
+A.Debouncing delays the execution of a function until a certain amount of time has passed since the last time it was called.
+If the event is triggered again before the delay finishes, the timer resets.
+Use case in React:
+- Search input (API call only after user stops typing).
+- Window resize handling.
+- Form validation on pause.
+
+Throttling ensures a function is only executed once in a specific time interval, no matter how many times the event is triggered.
+Use case in React:
+- Infinite scroll (load more items only once every X ms).
+- Scroll animations.
+- Resizing window updates.
