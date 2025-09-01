@@ -12,6 +12,12 @@ A. Props stands for properties.Props are inputs to a React component.They are us
 inside the child component.
 State is data that is managed inside a component.State can be changed over time. State is mutable.
 
+Q. What is diffing and Reconciliation?.
+A.Diffing is the process React uses to compare the Virtual DOM with the previous Virtual DOM to figure out what has changed.
+Reconciliation is the overall process of Diffing plus updating real Dom effciently based on diffing results.
+In simple words:
+- Reconciliation = Compare (Diffing) + Update (DOM changes).
+
 2. what is DOM, virtual DOM?
 DOM:- The actual HTML structure in the browser.
 A. Virtual DOM is a light weight copy of actual DOM. When state changes, React updates this Virtual DOM first and then compare with real DOM and updates it.
@@ -43,9 +49,16 @@ Webpack: Module bundler that packages JS, CSS, images, etc., into optimized file
 
 6. What is Redux?
 A Redux is a Centralized predictable state management library for JavaScript applications.It helps manage the global state of an application in a predictable way.
+Components can read data using selectors and update it by dispatching actions, which reducers handle to return a new state. This makes large applications easier
+to debug and maintain.
 - store holds the entire applications state.
 - State can only be changed via actions processed by reducers.
 - Supports middleware for async tasks.
+🔹 Redux Flow (Data Cycle)
+- UI dispatches an action (e.g., user clicks “Add Part”).
+- Reducer handles the action and returns a new state.
+- Store updates with the new state.
+- UI re-renders automatically with updated data.
 
 7. What is Reducer, Action, Store in Redux?
 Action: A Plain JS Object describing what happened.
@@ -54,7 +67,11 @@ Reducer: Pure function that takes current state + action, returns new state.
 Store: Single source of truth that holds the entire application state.
 
 8. What is Redux-Thunk?
-A middleware that allows you to return functions from actions instead of plain objects, enabling async operations like API calls.
+A middleware for redux that allows you to return functions from actions instead of plain objects, enabling async operations like API calls.
+
+Q. What is Redux-Saga?
+A.Redux-Saga is a middleware library for Redux used to handle asynchronous side effects like API calls.Redux-Saga uses ES6 Generators (function*) to manage async code in a more
+structured and testable way.
 
 9.what are keys in reactjs
 a.Keys in React are unique identifiers for elements in a list. Keys allows React to efficiently update and re-render only the changed items.
