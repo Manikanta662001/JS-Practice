@@ -7,6 +7,13 @@ A.ReactJs is a open-source frontend Javasript library developed by facebook used
 - Virtual DOM: Improves performance by minimizing direct DOM manipulations.
 - Unidirectional data flow: Data flows from parent to child components.
 
+Q. What are major features of react?
+A. - uses virtual DOM.
+   - Follows unidirectional or single way data flow or binding.
+   - supports server side rendering.
+   - Uses reusable UI Components.
+   - uses JSX syntax.
+
 Q. what are Props and State?
 A. Props stands for properties.Props are inputs to a React component.They are used to pass data from a parent component to a child component.Props are read-only (immutable) 
 inside the child component.
