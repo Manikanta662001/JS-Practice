@@ -100,3 +100,21 @@ Use case in React:
 Q. What are HOCs?
 A. HOC is a function that takes a component as input and returns a new component with additional props, logic, or behavior.It’s mainly used to reuse logic across multiple
 components without duplicating code.
+
+Q.What is AbortController.And when we really use this in react?
+A. AbortController is a Web API that lets you cancel (abort) an ongoing asynchronous operation, most commonly
+network requests.
+const controller = new AbortController();
+JS Example:-
+----------
+fetch("/api/users", { signal: controller.signal })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => {
+    if (err.name === "AbortError") {
+      console.log("Request aborted");
+    }
+  });
+
+// Cancel request
+controller.abort();
