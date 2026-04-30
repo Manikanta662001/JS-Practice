@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Manager</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+      }
+
+      body {
+        background: #f3f3f3;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        /* margin-bottom: 20px; */
+        max-width: 300px;
+        margin: 20px auto;
+      }
+      .form button {
+        max-width: 20%;
+        margin: auto;
+      }
+
+      input {
+        padding: 8px;
+        flex: 1;
+      }
+
+      button {
+        padding: 8px 12px;
+        border: none;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      .controls {
+        margin-bottom: 15px;
+        display: flex;
+        gap: 10px;
+      }
+
+      table {
+        width: 100%;
+        background: white;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+
+      /* .topper {
+        background: #d4edda;
+      }
+
+      .fail {
+        color: red;
+        font-weight: bold;
+      } */
+
+      .stats {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Student Management System</h1>
+
+    <div class="form">
+      <input type="text" id="name" placeholder="Student Name" />
+      <input type="number" id="marks" placeholder="Marks" />
+      <button onclick="addStudent()">Add</button>
+    </div>
+
+    <div class="controls">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search student..."
+        onkeyup="searchStudent()"
+      />
+      <button onclick="sortStudents()">Sort by Marks</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Marks</th>
+          <th>Grade</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="studentTable"></tbody>
+    </table>
+
+    <div class="stats" id="stats"></div>
+
+    <script>
+      let students = [];
+      let type = "add"; // add or update
+      let currentIndex = null;
+
+      function getGrade(marks) {
+        if (marks >= 90) return "A";
+        if (marks >= 75) return "B";
+        if (marks >= 50) return "C";
+        return "Fail";
+      }
+
+      function addStudent() {
+        const name = document.getElementById("name").value.trim();
+        const marks = parseInt(document.getElementById("marks").value);
+
+        if (!name || isNaN(marks)) {
+          alert("Enter valid data");
+          return;
+        }
+
+        if (type === "add") {
+          const nameExisist = students.findIndex(
+            (s) => s.name.toLowerCase() === name.toLowerCase(),
+          );
+          if (nameExisist !== -1) {
+            alert("Student with this name already exists");
+            return;
+          }
+          students.push({ name, marks });
+        } else {
+          students[currentIndex] = { name, marks };
+          type = "add";
+          currentIndex = null;
+        }
+
+        document.getElementById("name").value = "";
+        document.getElementById("marks").value = "";
+
+        renderStudents(students);
+      }
+
+      function deleteStudent(index) {
+        students.splice(index, 1);
+        renderStudents(students);
+      }
+
+      function updateStudent(index) {
+        const form = document.getElementsByClassName("form")[0];
+        const nameInput = form.querySelector("#name");
+        const marksInput = form.querySelector("#marks");
+        const addButton = form.querySelector("button");
+        nameInput.value = students[index].name;
+        marksInput.value = students[index].marks;
+        addButton.innerText = "Update";
+        type = "update";
+        currentIndex = index;
+      }
+
+      function renderStudents(list) {
+        const tbody = document.getElementById("studentTable");
+        // const statsDiv = document.getElementById("stats");
+
+        tbody.innerHTML = "";
+
+        if (list.length === 0) {
+          //   statsDiv.innerText = "";
+          return;
+        }
+
+        // let total = 0;
+        // let maxMarks = Math.max(...list.map((s) => s.marks));
+
+        list.forEach((student, index) => {
+          //   total += student.marks;
+
+          const tr = document.createElement("tr");
+
+          //   if (student.marks === maxMarks) {
+          //     tr.classList.add("topper");
+          //   }
+
+          const grade = getGrade(student.marks);
+
+          tr.innerHTML = `
+        <td>${student.name}</td>
+        <td>${student.marks}</td>
+        <td class="${grade === "Fail" ? "fail" : ""}">${grade}</td>
+        <td><button onclick="deleteStudent(${index})">Delete</button><button onclick="updateStudent(${index})">Update</button></td>
+      `;
+
+          tbody.appendChild(tr);
+        });
+
+        // const avg = (total / list.length).toFixed(2);
+        // statsDiv.innerText = `Average Marks: ${avg}`;
+      }
+
+      function sortStudents() {
+        students.sort((a, b) => b.marks - a.marks);
+        renderStudents(students);
+      }
+
+      function searchStudent() {
+        const value = document.getElementById("search").value.toLowerCase();
+
+        const filtered = students.filter((s) =>
+          s.name.toLowerCase().includes(value),
+        );
+
+        renderStudents(filtered);
+      }
+    </script>
+  </body>
+</html>
